@@ -5,6 +5,8 @@ history = []
 def log_history(entry): 
     history.append(entry)
     
+
+    
 def add(x, y):
     return x + y 
 
@@ -143,3 +145,9 @@ while True:
     # if again != 'y': 
     #     print("Thankyou for using the calculator application :)")
     #     break       
+    
+with open("calc_history.txt", "a") as file: 
+    for entry in history: 
+        file.write(entry + "\n")
+        
+    print("History stored on the text file sucessfully!")
