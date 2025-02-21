@@ -1,11 +1,12 @@
 import math
+import datetime
 
 history = []
 
 def log_history(entry): 
     history.append(entry)
     
-
+time = datetime.datetime.now().strftime("%Y-%M-%D %H:%M:%S")
     
 def add(x, y):
     return x + y 
@@ -146,8 +147,13 @@ while True:
     #     print("Thankyou for using the calculator application :)")
     #     break       
     
-with open("calc_history.txt", "a") as file: 
-    for entry in history: 
-        file.write(entry + "\n")
+with open("calc_history.txt", "a") as file:
+    if history:  
+        file.write("Session Time: " + time + "\n\n")
+        for entry in history: 
+            file.write(entry + "\n")
+            
+        print("History stored on the text file sucessfully!")
         
-    print("History stored on the text file sucessfully!")
+    else: 
+        print("No history to store")
