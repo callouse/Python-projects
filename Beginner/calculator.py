@@ -123,6 +123,9 @@ while True:
             else: 
                 log_history(f"{x}! = {result}")
                 print(f"The factorial of {x} is, {result}")
+    else: 
+        print("Invalid Input! Enter operations from (1-9)")
+        continue    
      
     view = input("Do you want to view history? (y/n)").lower()
     if view == 'y': 
@@ -134,8 +137,7 @@ while True:
         print("Thankyou for using the calculator application :)")
         break    
     
-    else: 
-        print("Invalid Input! Enter operations from (1-9)")
+
     
     # view = input("Do you want to view history? (y/n)").lower()
     # if view == 'y': 
@@ -149,7 +151,7 @@ while True:
     
 with open("calc_history.txt", "a") as file:
     if history:  
-        file.write("Session Time: " + time + "\n\n")
+        file.write("\nSession Time: " + time + "\n\n")
         for entry in history: 
             file.write(entry + "\n")
             
