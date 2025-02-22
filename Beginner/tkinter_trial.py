@@ -5,16 +5,25 @@ root = tk.Tk()
 root.title("Tkinter Demo")
 root.geometry("400x400")
 
+def clear_screen(): 
+    for widgets in root.winfo_children(): 
+        widgets.destroy()
+
+def go_to_home(): 
+    clear_screen()
+    tk.Label(root, text="Home").pack(pady=20)
+
+    
 def login():
+    
     usrname_get = usrname_entry.get()
     pswd_get = pswd_entry.get()
 
     if usrname_get and pswd_get: 
-        new_window = tk.Toplevel(root)
-        new_window.title("Sucess")
-        new_window.geometry("400x400")
-        tk.Label(new_window, text="You've successfully logged in!!", font=("Arial", 20)).pack(pady=20)
-        tk.Button(new_window, text="OK", command=new_window.destroy). pack(pady = 10)
+        clear_screen()
+        success_label = tk.Label(root, text="You've successfully logged in!!", font=("Arial", 20))
+        success_label.grid(row=1, column=1, pady=20)
+        tk.Button(root, text="OK", command=go_to_home).grid(row=2, column=1)
     
     else: 
         messagebox.showerror("Login Failed", "Please enter both Username and Password")
